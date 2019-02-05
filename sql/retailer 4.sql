@@ -1,8 +1,7 @@
 -- 4. Find the average product price by supplier AND category
 
 SELECT 
-    products.ProductName,
-    AVG(products.PRICE) AS avgprice,
+   avg (products.Price),
     categories.CategoryName AS category,
         suppliers.SupplierName AS SUPPLINAME
 
@@ -12,5 +11,8 @@ FROM
     categories ON categories.CategoryID = products.CategoryID
     join
         suppliers ON suppliers.supplierid = products.supplierid
+        
+        group by category,suppliname
+        order by suppliname,category
 
-GROUP BY productname;
+;
