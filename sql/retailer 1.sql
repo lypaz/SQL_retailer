@@ -1,13 +1,16 @@
--- 1. Find the name of the customer that ordered the most orders in August 1997?
+-- 1. Find the name of the customer that ordered the most orders in January 1997?
 
 SELECT 
-    MONTH(orderdate),
-    MAX(orderdetails.quantity) AS quan,
-    orders.customerid
+
+    orderdate as month,
+    count(orders.customerid),
+    customers.CustomerName AS name
+    
 FROM
     orders
         JOIN
-    orderdetails ON orders.orderid = orderdetails.orderid
+    customers ON customers.Customerid = orders.CustomerID
 WHERE
     orderdate LIKE '1997-01-%'
-GROUP BY MONTH(orderdate);
+GROUP BY orders.CustomerID
+order by month desc;
