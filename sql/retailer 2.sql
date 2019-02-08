@@ -10,8 +10,9 @@ FROM
     orders ON orders.EmployeeID = employees.EmployeeID
 WHERE
     ORDERS.employeeid = (SELECT 
-            MAX(employeeid)
+            MIN(employeeid)
         FROM
             orders)
         AND orderdate LIKE '1996-%'
+
 ;
