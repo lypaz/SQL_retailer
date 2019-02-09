@@ -9,4 +9,4 @@ FROM
         JOIN
     orderdetails ON orderdetails.ProductID = products.ProductID
 GROUP BY orderdetails.productid
-ORDER BY quantity desc;
+ORDER BY quantity DESC;
