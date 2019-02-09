@@ -1,5 +1,12 @@
 -- What is the most popular product sold (don't forget the quantity!)?
 
-select products.ProductName as product, max(orderdetails.quantity) as quan
-from products
-join orderdetails on orderdetails.ProductID = products.ProductID
+SELECT 
+    products.ProductName AS product,
+    SUM(orderdetails.quantity) AS quantity,
+    COUNT(orderdetails.productid) AS numOForders
+FROM
+    products
+        JOIN
+    orderdetails ON orderdetails.ProductID = products.ProductID
+GROUP BY orderdetails.productid
+ORDER BY quantity desc;
