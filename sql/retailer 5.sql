@@ -2,9 +2,8 @@
 
 SELECT 
     categories.CategoryName,
-   sum( orderdetails.Quantity),
-   month (orders.OrderDate),
-    products.CategoryID
+    SUM(orderdetails.Quantity) AS AmountOfBevaragesSold,
+    MONTH(orders.OrderDate) AS MONTH
 FROM
     orderdetails
         JOIN
@@ -13,8 +12,9 @@ FROM
     products ON products.ProductID = orderdetails.ProductID
         JOIN
     categories ON categories.CategoryID = products.CategoryID
-    where categories.CategoryName like "beverages"
-     and orderdate not like "1997%"
-     group by month(orders.OrderDate)
-     ;
+WHERE
+    categories.CategoryName LIKE 'beverages'
+        AND orderdate LIKE '1996%'
+GROUP BY MONTH(orders.OrderDate)
+;
     

@@ -2,7 +2,7 @@
 
 SELECT 
     customers.CustomerName AS name,
-    COUNT(orders.customerid) AS NUMofORDERS
+    COUNT(orders.customerid) AS NumOfOrders
 FROM
     orders
         JOIN
